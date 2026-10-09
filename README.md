@@ -1,43 +1,27 @@
-# Website
+# Docusaurus Default Browser Reproduction
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Minimal reproduction for an issue where Docusaurus opens
+a running Chromium-based browser instead of the system
+default browser on macOS.
 
-## Installation
+## Environment
 
-```bash
-npm install
-```
+- Docusaurus: 3.10.2
+- Node.js: 24.16.0
+- macOS: 27.0
 
-**Note**: feel free to use the package manager of your choice.
+## Steps to reproduce
 
-## Local Development
+1. Set Firefox as the default browser on macOS.
+2. Launch Firefox and Google Chrome.
+3. Install dependencies using `npm install`.
+4. Run `npm run start`.
+5. Observe that Chrome opens instead of Firefox.
+6. Stop the development server and quit Chrome.
+7. Run `npm run start` again.
+8. Observe that Firefox opens.
 
-```bash
-npm run start
-```
+## Expected behavior
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-## Build
-
-```bash
-npm run build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-## Deployment
-
-Using SSH:
-
-```bash
-USE_SSH=true npm run deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> npm run deploy
-```
-
-If you are using GitHub Pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Docusaurus should respect the system default browser
+unless another browser is explicitly specified.
